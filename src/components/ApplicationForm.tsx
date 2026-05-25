@@ -6,9 +6,12 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import Icon from "@/components/ui/icon"
 
+const API_URL = "https://functions.poehali.dev/65bbcc26-e738-4b0c-b31d-143d7fc40b2b"
+
 export function ApplicationForm() {
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState("")
   const [form, setForm] = useState({
     name: "",
     phone: "",
@@ -21,13 +24,23 @@ export function ApplicationForm() {
     setForm({ ...form, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
-    setTimeout(() => {
-      setLoading(false)
+    setError("")
+    try {
+      const res = await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      })
+      if (!res.ok) throw new Error("Ошибка сервера")
       setSubmitted(true)
-    }, 1000)
+    } catch {
+      setError("Не удалось отправить заявку. Позвоните нам: +7 (8634) 31-22-72")
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -143,6 +156,10 @@ export function ApplicationForm() {
                     rows={3}
                   />
                 </div>
+
+                {error && (
+                  <p className="text-sm text-destructive text-center">{error}</p>
+                )}
 
                 <Button type="submit" className="w-full" disabled={loading}>
                   {loading ? "Отправляем..." : "Отправить заявку"}
