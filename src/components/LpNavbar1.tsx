@@ -7,6 +7,7 @@ const MENU_ITEMS = [
   { label: "О фонде", href: "#features" },
   { label: "Услуги", href: "#services" },
   { label: "Программы", href: "#programs" },
+  { label: "Новости", href: "#news" },
   { label: "Вопросы", href: "#faq" },
 ] as const
 

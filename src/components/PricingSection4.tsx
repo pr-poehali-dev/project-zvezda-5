@@ -88,7 +88,7 @@ export function PricingSection4() {
                   </div>
 
                   <Button variant={index === 1 ? "secondary" : "default"} className="w-full" asChild>
-                    <a href="tel:+78634312272">{plan.cta}</a>
+                    <a href="#application">{plan.cta}</a>
                   </Button>
                 </div>
 

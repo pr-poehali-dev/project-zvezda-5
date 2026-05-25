@@ -23,6 +23,8 @@ export function Footer2() {
                   <a href="#features" className="text-sm text-muted-foreground hover:text-foreground transition-colors">О фонде</a>
                   <a href="#services" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Услуги</a>
                   <a href="#programs" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Программы займов</a>
+                  <a href="#application" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Подать заявку</a>
+                  <a href="#news" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Новости</a>
                   <a href="#faq" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Вопросы</a>
                 </nav>
               </div>
